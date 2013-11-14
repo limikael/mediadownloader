@@ -2,7 +2,7 @@
 
 	require_once "../src/MediaDownloader.php";
 
-	Logger::enable();
+	MediaDownloader::setLoggingEnabled(TRUE);
 
 	function onprogress($percent) {
 		echo "Downloading: ".$percent."%\r";

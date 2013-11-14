@@ -3,7 +3,7 @@
 	/**
 	 * Logger.
 	 */
-	class Logger {
+	class MediaDownloaderLogger {
 
 		private static $enabled=FALSE;
 
@@ -18,7 +18,7 @@
 		/**
 		 * Enable.
 		 */
-		public static function enable() {
-			self::$enabled=TRUE;
+		public static function setEnabled($value) {
+			self::$enabled=$value;
 		}
 	}

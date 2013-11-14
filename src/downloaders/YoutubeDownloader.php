@@ -112,7 +112,7 @@
 						break;
 
 					default:
-						Logger::debug("unknown quality: ".$fmtVars["quality"]);
+						MediaDownloaderLogger::debug("unknown quality: ".$fmtVars["quality"]);
 						$quality=Media::MEDIUM;
 						break;
 				}
@@ -167,7 +167,7 @@
 			$url=parse_url($youtubeUrl);
 			$vars=YoutubeDownloader::decodeUrlVariables($url["query"]);
 
-			//Logger::debug("id: ".$vars["v"]);
+			//MediaDownloaderLogger::debug("id: ".$vars["v"]);
 
 			return $vars["v"];
 		}
@@ -213,7 +213,7 @@
 		public function download($media, $targetFile) {
 			$this->oldPercent=-1;
 
-			Logger::debug("youtube: will download from: ".$media->data["url"]);
+			MediaDownloaderLogger::debug("youtube: will download from: ".$media->data["url"]);
 
 			$ch=curl_init($media->data["url"]);
 			$fp=fopen($targetFile,"w");

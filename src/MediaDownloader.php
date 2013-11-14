@@ -1,8 +1,6 @@
 <?php
 
-	if (!class_exists("Logger"))
-		require_once __DIR__."/base/Logger.php";
-
+	require_once __DIR__."/base/MediaDownloaderLogger.php";
 	require_once __DIR__."/base/Media.php";
 	require_once __DIR__."/base/IDownloader.php";
 	require_once __DIR__."/base/Metadata.php";
@@ -40,7 +38,7 @@
 		public function load($url) {
 			$url=trim($url);
 
-			Logger::debug("initiating media download from: ".$url);
+			MediaDownloaderLogger::debug("initiating media download from: ".$url);
 			$useClassName=NULL;
 
 			foreach ($this->downloaderClasses as $className) {
@@ -107,5 +105,12 @@
 			}
 
 			return NULL;
+		}
+
+		/**
+		 * Should logging to stdout be enabled?
+		 */
+		public static function setLoggingEnabled($value) {
+			MediaDownloaderLogger::setEnabled($value);
 		}
 	}
