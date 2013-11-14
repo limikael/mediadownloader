@@ -33,7 +33,7 @@ print_r($metadata->keywords);
 Next, we can fetch an array of ```Media``` objects. They each contain information suggesting the type and
 quality of the media.
 
-```
+```php
 $mediaEntries=$downloader->getMedia();
 
 foreach ($mediaEntries as $media) {
@@ -43,13 +43,13 @@ foreach ($mediaEntries as $media) {
 
 It is also possible to fetch the ```Media``` object we want by asking for a particular type, provided that it exists.
 
-```
+```php
 $media=$downloader->getMediaByType("video/mp4");
 ```
 
 Once we have the ```Media``` object, we can start the download.
 
-```
+```php
 $media->download("my_downloaded_media");
 ```
 
