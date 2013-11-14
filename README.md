@@ -53,3 +53,14 @@ Once we have the ```Media``` object, we can start the download.
 $media->download("my_downloaded_media");
 ```
 
+Optionally, we can register a function that will be called during the download to indicate progress.
+
+```php
+function onProgress($percent) {
+  echo "downloading: ".$percent."%\n";
+}
+
+$downloader->setProgressFunc("onProgress");
+```
+
+That's it! Enjoy! :)
