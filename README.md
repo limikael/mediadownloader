@@ -17,3 +17,15 @@ The first thing to do is to create a `MediaDownloader` object for the URL we wan
 $downloader=new MediaDownloader("http://www.youtube.com/watch?v=Z5AISm31cqc");
 ```
 
+At this point we can fetch metadata for the media. The metadata includes ```title```, ```description```, 
+```keywords``` and ```thumbnail``` url for the media. These are all strings, except keywords which is an
+array of strings.
+
+```php
+$metadata=$downloader->getMetaData();
+
+echo $metadata->title."\n";
+echo $metadata->description."\n";
+echo $metadata->thumbnail."\n";
+print_r($metadata->keywords);
+```
