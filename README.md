@@ -29,3 +29,27 @@ echo $metadata->description."\n";
 echo $metadata->thumbnail."\n";
 print_r($metadata->keywords);
 ```
+
+Next, we can fetch an array of ```Media``` objects. They each contain information suggesting the type and
+quality of the media.
+
+```
+$mediaEntries=$downloader->getMedia();
+
+foreach ($mediaEntries as $media) {
+  echo "type: ".$media->getType()." quality: ".$media->getQuality()."\n";
+}
+```
+
+It is also possible to fetch the ```Media``` object we want by asking for a particular type, provided that it exists.
+
+```
+$media=$downloader->getMediaByType("video/mp4");
+```
+
+Once we have the ```Media``` object, we can start the download.
+
+```
+$media->download("my_downloaded_media");
+```
+
