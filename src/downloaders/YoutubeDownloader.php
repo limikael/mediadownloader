@@ -107,7 +107,12 @@
 						$quality=Media::HIGH;
 						break;
 
+					case "hd720":
+						$quality=Media::HIGH;
+						break;
+
 					default:
+						Logger::debug("unknown quality: ".$fmtVars["quality"]);
 						$quality=Media::MEDIUM;
 						break;
 				}
@@ -123,7 +128,7 @@
 
 				$media=new Media($type,$quality,$extra);
 				$media->setDownloader($this);
-				$media->data["url"]=$fmtVars["url"];
+				$media->data["url"]=$fmtVars["url"]."&signature=".$fmtVars["sig"];
 
 				$this->media[]=$media;
 			}
@@ -208,7 +213,7 @@
 		public function download($media, $targetFile) {
 			$this->oldPercent=-1;
 
-			echo "youtube: will download from: ".$media->data["url"]."\n";
+			Logger::debug("youtube: will download from: ".$media->data["url"]);
 
 			$ch=curl_init($media->data["url"]);
 			$fp=fopen($targetFile,"w");
@@ -223,6 +228,9 @@
 			$res=curl_exec($ch);
 			curl_close($ch);
 			fclose($fp);
+
+			if (!filesize($targetFile))
+				throw new Exception("Unable to download");
 
 			if (!$res)
 				throw new Exception(curl_error($ch));

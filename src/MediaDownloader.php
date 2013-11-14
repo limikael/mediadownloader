@@ -7,7 +7,6 @@
 	require_once __DIR__."/base/IDownloader.php";
 	require_once __DIR__."/base/Metadata.php";
 
-	require_once __DIR__."/downloaders/YoutubeMp3OrgDownloader.php";
 	require_once __DIR__."/downloaders/YoutubeDownloader.php";
 
 	/**
@@ -28,7 +27,6 @@
 		 */
 		public function MediaDownloader($url=NULL) {
 			$this->downloaderClasses=array(
-				"YoutubeMp3OrgDownloader",
 				"YoutubeDownloader"
 			);
 
